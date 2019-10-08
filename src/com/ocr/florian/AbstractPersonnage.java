@@ -1,12 +1,9 @@
 package com.ocr.florian;
 
-public class AbstractPersonnage {
-    int attaqueBasique;
-    int attaqueSpéciale;
-    String talk;
+public abstract class AbstractPersonnage {
 
-    public void ab() {
-        this.attaqueBasique = attaqueBasique;
-    }
-
+    public abstract String talk();
+    public abstract void attaque();
+    public abstract void attaqueBasique();
+    public abstract void attaqueSpeciale();
 }
