@@ -4,13 +4,13 @@ import static com.ocr.florian.Player.*;
 import static com.ocr.florian.Player.getVie;
 import static java.lang.System.out;
 
-public class Guerrier extends AbstractPersonnage {
+public class Guerrier {
     int attaqueBasique;
     int attaqueSpéciale;
     String talk;
 
     public static String talk() {
-        String s="Woarg je suis le Guerrier ";
+        String s="Woarg je suis le Guerrier Joueur"+getI()+ " niveau " + getNiveau() + " je possède " + getVie() + " de vitalité, " + getForce() + " de force, "+ getAgilite() +" d'agilité et "+ getIntelligence() +" d'intelligence !";;
         return s;
     }
     public void attaque(){
@@ -26,16 +26,16 @@ public class Guerrier extends AbstractPersonnage {
         }
     }
     static void attaqueSpeciale(){
-        out.println("Joueur 1 utilise Coup de Rage et inflige " + getJoueur1().get(2) * 2 + " dommages.");
-        getJoueur2().set(3, getJoueur2().get(3) - (getJoueur1().get(2) * 2));
-        out.println("Joueur 2 perd " + getJoueur1().get(2) * 2 + " points de vie");
-        if (Setup.getJoueur2().get(3) < 1) {
+        out.println("Joueur 1 utilise Coup de Rage et inflige " + getForce() * 2 + " dommages.");
+        setVie(getVie()-(getForce()*2));
+        out.println("Joueur 2 perd " + getForce() * 2 + " points de vie");
+        if (getVie() < 1) {
             System.out.println("Joueur 2 est mort !");
-            getJoueur1().set(3, getJoueur1().get(3) - (getJoueur1().get(2) / 2));
-            out.println("Joueur 1 perd " + getJoueur1().get(2) / 2 + " points de vie");
+            setVie(getVie()-(getForce()/2));
+            out.println("Joueur 1 perd " + getForce() / 2 + " points de vie");
             return;
         }
-        getJoueur1().set(3, getJoueur1().get(3) - (getJoueur1().get(2) / 2));
-        out.println("Joueur 1 perd " + getJoueur1().get(2) / 2 + " points de vie");
+        setVie(getVie()-(getForce()/2));
+        out.println("Joueur 1 perd " + getForce() / 2 + " points de vie");
     }
 }
