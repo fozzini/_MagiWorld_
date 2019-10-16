@@ -1,26 +1,59 @@
 package com.ocr.florian;
 
+
 import java.util.Scanner;
 
-public class Player {
+import static java.lang.System.out;
 
+public class Player {
     static Scanner sc = new Scanner(System.in);
 
-
-
-    private static int i;
     private static int nom;
     private static int niveau;
     private static int vie;
     private static int force;
     private static int agilite;
     private static int intelligence;
-    public static int getNiveau() {
+    private static int j;
+
+
+
+    void setNom(int nom) {
+        Player.nom = nom;
+    }
+
+    void setNiveau(int niveau) {
+        Player.niveau = niveau;
+    }
+
+    void setVie(int vie) {
+        Player.vie = vie;
+    }
+
+    void setForce(int force) {
+        Player.force = force;
+    }
+
+    void setAgilite(int agilite) {
+        Player.agilite = agilite;
+    }
+
+    void setIntelligence(int intelligence) {
+        Player.intelligence = intelligence;
+    }
+
+    public static int getJ() {
+        return j;
+    }
+
+    static int getNiveau() {
         return niveau;
     }
-    public static int getI() {
-        return i;
+
+    static int getForce() {
+        return force;
     }
+
     public static int getAgilite() {
         return agilite;
     }
@@ -29,49 +62,64 @@ public class Player {
         return intelligence;
     }
 
-    public static int getNom() {
+    private static int getNom() {
         return nom;
     }
 
-    public static int getVie() {
+    static int getVie() {
         return vie;
     }
 
-    public static void setVie(int vie) {
+
+    Player(int j,int nom, int niveau, int vie, int force, int agilite, int intelligence) {
+        Player.j = j;
+        Player.nom = nom;
+        Player.niveau = niveau;
         Player.vie = vie;
-    }
+        Player.force = force;
+        Player.agilite = agilite;
+        Player.intelligence = intelligence;
 
-    public static int getForce() {
-        return force;
-    }
-    public Player(int i,int nom, int niveau, int vie, int force, int agilite, int intelligence) {
-       this.i=i;this.nom=nom;this.niveau=niveau;this.vie=vie;this.force=force;this.agilite=agilite;this.intelligence=intelligence;
 
     }
-    public void fight() {
-        while (getVie() >= 0) {
-
-            if (Player.vie <= 0)  {
-                System.out.println("Joueur 1 à perdu !");
-                return;
-            } else if (Player.vie <= 0)  {
-                System.out.println("Joueur 2 à perdu !");
-                return;
-            }
-        }
-    }
-    public static String citation () {
-        if (nom == 1) {
+    public String citation() {
+        if (getNom() == 1) {
         }
         return Guerrier.talk();
+
+
     }
-    public static String perso() {
-        if (Player.getNom() == 1) {
-            return "Guerrier";
+    public void damage(int damage){
+        Player.vie -= damage;
+
+    }
+    public static void attaque() {
+        out.println("Joueur"+Player.getJ()  + Player.getVie() + " Vitalité Veuillez choisir votre action (1 : Attaque basique, 2 : Attaque spéciale)");
+        int action = sc.nextInt();
+        if(action==1){
+            //Player.sw(Player.attaqueBasique());
         }
-        return null;
+        else if(action==2){
+            //Player.sw.attaqueSpeciale ()}
+        }
     }
 
+    public static void sw() {
+        switch (Player.getNom()) {
+            case 1:
+                if (Player.getNom() == 1) ;
+                //Guerrier.attaque();
+                break;
+            case 2:
+                if (Player.getNom() == 1) ;
+                //Rodeur.attaque();
+                break;
+            case 3:
+                if (Player.getNom() == 1) ;
+                //Mage.attaque();
+                break;
+        }
+    }
 }
 
 
