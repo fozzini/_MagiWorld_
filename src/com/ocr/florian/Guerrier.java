@@ -7,14 +7,14 @@ public class Guerrier extends AbstractPersonnage {
 
 // création d'attributs d'instance =====================================================================================
 
-    int i;
-    int j;
-    int nom;
-    int niveau;
-    int vie;
-    int force;
-    int agilite;
-    int intelligence;
+    private int i;
+    private int j;
+    private int nom;
+    private int niveau;
+    private int vie;
+    private int force;
+    private int agilite;
+    private int intelligence;
 
 //creation des getters==================================================================================================
 

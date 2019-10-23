@@ -5,19 +5,13 @@ public abstract class AbstractPersonnage {
 
     //creation méthode pour décrire le personnage ======================================================================
 
-    public String toString() {
-        String s = "La citation du personnage";
-        return s ;
-    }
+    public abstract String toString();
+    
     //creation méthodes pour les attaques===============================================================================
 
-    int attaqueBasique () {
-        return 0;
-    }
+    abstract int attaqueBasique ();
 
-    int attaqueSpeciale () {
-        return 0;
-    }
-    
+    abstract int attaqueSpeciale ();
+
 }
 

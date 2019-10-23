@@ -19,13 +19,11 @@ public class App {
     private static int agilite;
     private static int intelligence ;
 
-    static Guerrier[] player = new Guerrier[3];
-
     public static void main(String[] args) {
 
     //création des instances du Joueur1 et 2  ==========================================================================
 
-
+        Guerrier[] player = new Guerrier[3];
         j = 2;
         for(i=1; i<3; i++){
 
