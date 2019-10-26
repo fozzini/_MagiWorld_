@@ -2,81 +2,67 @@ package com.ocr.florian;
 
 import java.util.Scanner;
 
+import static com.ocr.florian.AbstractPersonnage.*;
+import static com.ocr.florian.AbstractPersonnage.i;
 import static java.lang.System.out;
 
 public class App {
 
     static Scanner sc = new Scanner(System.in);
 
-//creation des attributs de class   ====================================================================================
+    static AbstractPersonnage[] player = new AbstractPersonnage[2];
 
-    private static int i;
-    private static int j;
-    private static int nom;
-    private static int niveau;
-    private static int vie;
-    private static int force;
-    private static int agilite;
-    private static int intelligence ;
+
 
     public static void main(String[] args) {
+        creator();
+        creator();
+        fight();
+    }
 
-    //création des instances du Joueur1 et 2  ==========================================================================
+    static AbstractPersonnage creator(){
 
-        Guerrier[] player = new Guerrier[3];
-        j = 2;
-        for(i=1; i<3; i++){
-
-            System.out.println("Création du Personnage du Joueur "+ i);
-            builder();
-            player[i] = new Guerrier(i,j,nom,niveau,vie,force,agilite,intelligence);
-            System.out.println(player[i].toString());
-            j = 1;
-        }
-
-    //lancement du combat à l'aide d'une boucle while et for, paramétrage i et j========================================
-
-        i = 1;
-        j = 2;
-        while (player[i].getVie() > 0) {
-            for (i = 1; i < 3; i++){
-                out.println("Joueur"+i+ " " +player[i].getVie()+ " Vitalité Veuillez choisir votre action " +
-                        "(1 : Attaque basique, 2 : Attaque spéciale)");
-                int action = sc.nextInt();
-                if(action == 1){
-                    player[j].setVie(player[j].getVie()-player[i].attaqueBasique());
-                }
-                else if (action == 2){
-                    player[j].setVie(player[j].getVie()-player[i].attaqueSpeciale());
-                }
-                j = 1;
+            System.out.println("Création du Personnage du Joueur " + i);
+            System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");
+            int nom = sc.nextInt();
+            System.out.println("Niveau du personnage ?");
+            int niveau = sc.nextInt();
+            System.out.println("Force du personnage ?");
+            int force = sc.nextInt();
+            System.out.println("Agilité du personnage ?");
+            int agilite = sc.nextInt();
+            System.out.println("Intelligence du personnage  ?");
+            int intelligence = sc.nextInt();
+            switch (nom) {
+                case 1:
+                    System.out.println(player[i].toString());
+                    return player[i] = new Guerrier(niveau, force, agilite, intelligence);
             }
-            i = 1;
-            j = 2;
+
+        return null;
+    }
+    static void fight(){
+
+        while (player[i].getVie() > 0);{
+
+            out.println("Joueur"+i+ " " +player[i].getVie()+ " Vitalité Veuillez choisir votre action " +
+                    "(1 : Attaque basique, 2 : Attaque spéciale)");
+            int action = sc.nextInt();
+            switch (action){
+                case 1 :
+                    player[j].setVie(player[j].getVie()-player[i].attaqueBasique());
+                case 2 :
+                    player[j].setVie(player[j].getVie()-player[i].attaqueSpeciale());
+            }
         }
-        if (player[i].getVie() < 0) {
-            System.out.println("Joueur"+i+" à perdu !");
-        }
+        System.out.println("Joueur"+i+" à perdu !");
     }
 
-    //méthode d'aquisition des attributs de class  =========================================================================
 
-    static void  builder(){
-
-        System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");
-        nom = sc.nextInt();
-        System.out.println("Niveau du personnage ?");
-        niveau = sc.nextInt();
-        vie = niveau * 5;
-        System.out.println("Force du personnage ?");
-        force = sc.nextInt();
-        System.out.println("Agilité du personnage ?");
-        agilite = sc.nextInt();
-        System.out.println("Intelligence du personnage  ?");
-        intelligence = sc.nextInt();
-
-    }
 }
+
+
+
 
 
 

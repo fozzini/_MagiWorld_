@@ -5,49 +5,18 @@ import static java.lang.System.out;
 public class Guerrier extends AbstractPersonnage {
 
 
-// création d'attributs d'instance =====================================================================================
-
-    private int i;
-    private int j;
-    private int nom;
-    private int niveau;
-    private int vie;
-    private int force;
-    private int agilite;
-    private int intelligence;
-
-//creation des getters==================================================================================================
-
-    public int getVie() {
-        return vie;
+    Guerrier(int niveau, int force, int agilite, int intelligence) {
+       super(niveau, force, agilite, intelligence);
     }
 
 
-//creation des setters==================================================================================================
-
-    public void setVie(int vie) {
-        this.vie = vie;
-    }
-
-//creation du constructeur d'objet Guerrier=============================================================================
-
-    Guerrier(int i, int j, int nom, int niveau, int vie, int force, int agilite, int intelligence) {
-        this.i = i;
-        this.j = j;
-        this.nom = nom;
-        this.niveau = niveau;
-        this.vie = vie;
-        this.force = force;
-        this.agilite = agilite;
-        this.intelligence = intelligence;
-    }
 
 //creation méthode pour décrire le personnage ==========================================================================
 
     @Override
     public String toString() {
-        String s = "Woarg je suis le Guerrier Joueur"+i+" niveau " + niveau + " je possède " + vie + " de vitalité, "
-                + force + " de force, " + agilite + " d'agilité et " + intelligence + " d'intelligence !";
+        String s = "Woarg je suis le Guerrier Joueur"+i+" niveau " + getNiveau() + " je possède " + getVie() + " de vitalité, "
+                + getForce() + " de force, " + getAgilite() + " d'agilité et " + getIntelligence() + " d'intelligence !";
         return s;
     }
 
@@ -56,19 +25,19 @@ public class Guerrier extends AbstractPersonnage {
     @Override
     int attaqueBasique () {
 
-        out.println("Joueur" +i+ " utilise Coup d'Epée et inflige " + force + " dommages.");
-        out.println("Joueur" +j+ " perd " + force + " points de vie");
-        return force;
+        out.println("Joueur" +i+ " utilise Coup d'Epée et inflige " + getForce() + " dommages.");
+        out.println("Joueur" +j+ " perd " + getForce() + " points de vie");
+        return getForce();
     }
 
     @Override
     int attaqueSpeciale () {
 
-        out.println("Joueur" +i+ " utilise Coup de Rage et inflige " + force * 2 + " dommages.");
-        out.println("Joueur" +j+" perd " + force * 2 + " points de vie");
-        out.println("Joueur" +i+ " perd " + force / 2 + " points de vie");
-        setVie(getVie()-force / 2);
-        return (force * 2);
+        out.println("Joueur" +i+ " utilise Coup de Rage et inflige " + getForce() * 2 + " dommages.");
+        out.println("Joueur" +j+" perd " + getForce() * 2 + " points de vie");
+        out.println("Joueur" +i+ " perd " + getForce() / 2 + " points de vie");
+        setVie(getVie()-getForce() / 2);
+        return (getForce() * 2);
     }
 }
 
