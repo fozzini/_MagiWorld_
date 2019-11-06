@@ -2,29 +2,16 @@ package com.ocr.florian;
 
 import java.util.Scanner;
 
-import static com.ocr.florian.AbstractPersonnage.*;
-import static com.ocr.florian.AbstractPersonnage.i;
-import static java.lang.System.out;
-
 public class App {
 
     static Scanner sc = new Scanner(System.in);
 
-    static AbstractPersonnage[] player = new AbstractPersonnage[2];
-
-
-
     public static void main(String[] args) {
-        creator();
-        creator();
-        fight();
-    }
-
-    static AbstractPersonnage creator(){
-
+        AbstractPersonnage[] player = new AbstractPersonnage[2];
+        for (int i = 0; i < 2; i++) {
             System.out.println("Création du Personnage du Joueur " + i);
             System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");
-            int nom = sc.nextInt();
+            int classe = sc.nextInt();
             System.out.println("Niveau du personnage ?");
             int niveau = sc.nextInt();
             System.out.println("Force du personnage ?");
@@ -33,32 +20,19 @@ public class App {
             int agilite = sc.nextInt();
             System.out.println("Intelligence du personnage  ?");
             int intelligence = sc.nextInt();
-            switch (nom) {
-                case 1:
-                    System.out.println(player[i].toString());
-                    return player[i] = new Guerrier(niveau, force, agilite, intelligence);
+            switch(classe){
+                case 1 : player[i] = new Guerrier(niveau, force, agilite, intelligence);
+                //case 2 : player[i] = new Rodeur (niveau, force, agilite, intelligence);
+                //case 3 : player[i] = new Mage (niveau, force, agilite, intelligence);
             }
-
-        return null;
-    }
-    static void fight(){
-
-        while (player[i].getVie() > 0);{
-
-            out.println("Joueur"+i+ " " +player[i].getVie()+ " Vitalité Veuillez choisir votre action " +
-                    "(1 : Attaque basique, 2 : Attaque spéciale)");
-            int action = sc.nextInt();
-            switch (action){
-                case 1 :
-                    player[j].setVie(player[j].getVie()-player[i].attaqueBasique());
-                case 2 :
-                    player[j].setVie(player[j].getVie()-player[i].attaqueSpeciale());
-            }
+            System.out.println(player[i].toString());
         }
-        System.out.println("Joueur"+i+" à perdu !");
+        do {
+            player[0].fight(player[1]);
+            player[1].fight(player[0]);
+        }
+        while(player[0].getVie() > 0 && player[1].getVie() > 0);
     }
-
-
 }
 
 
