@@ -58,10 +58,31 @@ public abstract class AbstractPersonnage {
         return force;
     }
 
+    public int getAgilite() {
+        return agilite;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
     public int getTab() {
         return tab;
     }
 
+    //Setters
+
+    public void setAgilite(int agilite) {
+        this.agilite = agilite;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
     // Méthode pour décrire le personnage.
 
     public String toString() {

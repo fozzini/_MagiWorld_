@@ -31,8 +31,15 @@ public class App {
             switch (classe) {
                 case 1:
                     player[tab] = new Guerrier(classe, tab, niveau, force, agilite, intelligence);
-                    //case 2 : player[i] = new Rodeur (niveau, force, agilite, intelligence);
-                    //case 3 : player[i] = new Mage (niveau, force, agilite, intelligence);
+                    break;
+
+                case 2 :
+                    player[tab] = new Rodeur (classe, tab, niveau, force, agilite, intelligence);
+                    break;
+
+                case 3 :
+                    player[tab] = new Mage (classe, tab, niveau, force, agilite, intelligence);
+                    break;
             }
             System.out.println(player[tab].toString());
         }
