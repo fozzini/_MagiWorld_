@@ -3,16 +3,16 @@ package com.ocr.florian;
 import static java.lang.System.out;
 
 public class Mage extends AbstractPersonnage {
-    public Mage(int classe, int tab, int niveau, int force, int agilite, int intelligence) {
-        super(classe, tab, niveau, force, agilite, intelligence);
+    public Mage(int niveau, int force, int agilite, int intelligence) {
+        super("Abracadabra",niveau, force, agilite, intelligence);
     }
     //creation méthodes pour les attaques===================================================================================
 
     @Override
     public int attaqueBasique () {
-        AbstractPersonnage.swap();
-        out.println("Joueur" +a+ " utilise Boule de Feu et inflige " + getIntelligence() + " dommages.");
-        out.println("Joueur" +b+ " perd " + getIntelligence() + " points de vie");
+
+        out.println("Joueur" + (p1+1) + " utilise Boule de Feu et inflige " + getIntelligence() + " dommages.");
+        out.println("Joueur" + (p2+1) + " perd " + getIntelligence() + " points de vie");
 
         return getIntelligence();
     }
@@ -20,8 +20,8 @@ public class Mage extends AbstractPersonnage {
     @Override
     public int attaqueSpeciale () {
 
-        out.println("Joueur" +a+ " utilise Soin et regagne " + getIntelligence() * 2 + " points de vie.");
-        setIntelligence(getIntelligence() * 2);
+        out.println("Joueur" + (p1+1) + " utilise Soin et regagne " + getIntelligence() * 2 + " points de vie.");
+        vie += (getIntelligence() * 2);
 
         return 0;
     }
