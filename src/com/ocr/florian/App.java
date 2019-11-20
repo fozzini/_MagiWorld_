@@ -2,64 +2,90 @@ package com.ocr.florian;
 
 import java.util.Scanner;
 
+import static com.ocr.florian.AbstractPersonnage.getP1;
+import static com.ocr.florian.AbstractPersonnage.getP2;
+
+
 public class App {
 
     static Scanner sc = new Scanner(System.in);
 
+    static int tableaux = 2;
+    static int i ;
+
+
+    static AbstractPersonnage[] players = new AbstractPersonnage[tableaux];
+
+
     public static void main(String[] args) {
 
-        AbstractPersonnage[] player = new AbstractPersonnage[2];
+        //Création des personnages.
 
-        for (int tab = 0; tab < 2; tab++) {
-            System.out.println("Création du Personnage du Joueur " + (tab + 1));
+        for (i = 0; i < 2; i++) {
+        createurDePersonnages();
+        System.out.println(players[i].toString());
+        }
 
+        //Combat.
+
+        do {
+            AbstractPersonnage.permuter();
+            players[getP1()].fight(players);
+        }
+        while (players[getP2()].vie> 0);
+        System.out.println("player"+ (getP2()+1) +" à perdu");
+    }
+
+        //Méthode qui retourne un personnage.
+
+    static AbstractPersonnage createurDePersonnages(){
+
+        int playerName;
+        int niveau;
+        int force;
+        int agilite;
+        int intelligence;
+
+        System.out.println("Création du Personnage du Joueur " + (i + 1));
+
+
+        do{
             System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");
-            int classe = sc.nextInt();
+            playerName = sc.nextInt();
+        }
+        while (playerName < 1 | playerName > 3 );
 
+        do {
             System.out.println("Niveau du personnage ?");
-            int niveau = sc.nextInt();
+            niveau = sc.nextInt();
 
             System.out.println("Force du personnage ?");
-            int force = sc.nextInt();
+            force = sc.nextInt();
 
             System.out.println("Agilité du personnage ?");
-            int agilite = sc.nextInt();
+            agilite = sc.nextInt();
 
             System.out.println("Intelligence du personnage  ?");
-            int intelligence = sc.nextInt();
+            intelligence = sc.nextInt();
 
-            switch (classe) {
-                case 1:
-                    player[tab] = new Guerrier(classe, tab, niveau, force, agilite, intelligence);
-                    break;
+        }while ((force|agilite|intelligence) < 0|(force|agilite|intelligence) > 100|force + agilite + intelligence != niveau);
 
-                case 2 :
-                    player[tab] = new Rodeur (classe, tab, niveau, force, agilite, intelligence);
+        switch (playerName) {
+            case 1:
+                players[i] = new Guerrier(niveau,force,agilite,intelligence);
                     break;
-
-                case 3 :
-                    player[tab] = new Mage (classe, tab, niveau, force, agilite, intelligence);
+            case 2:
+                players[i] = new Rodeur(niveau,force,agilite,intelligence);
                     break;
-            }
-            System.out.println(player[tab].toString());
+            case 3:
+                players[i] =new Mage(niveau,force,agilite,intelligence);
+                    break;
         }
 
-        int a = 1;
-        int b = 0;
-
-        while (player[0].getVie() > 0 ){
-
-            int tmp = a;
-            a = b;
-            b = tmp;
-
-            int damage = player[a].fight();
-            player[b].damage(damage);
-        }
-        System.out.println("player"+ a +" à perdu");
-
+        return players[i];
     }
 }
+
 
 
 
