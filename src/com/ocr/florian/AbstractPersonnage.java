@@ -14,6 +14,7 @@ public abstract class AbstractPersonnage {
 
     private int niveau;
     protected int vie;
+    protected int vieDepart;
     private int force;
     private int agilite;
     private int intelligence;
@@ -29,6 +30,7 @@ public abstract class AbstractPersonnage {
         this.cri = cri;
         this.niveau = niveau;
         this.vie = niveau * 5;
+        this.vieDepart = niveau * 5;
         this.force = force;
         this.agilite = agilite;
         this.intelligence = intelligence;

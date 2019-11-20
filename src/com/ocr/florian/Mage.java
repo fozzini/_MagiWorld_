@@ -22,6 +22,9 @@ public class Mage extends AbstractPersonnage {
 
         out.println("Joueur" + (p1+1) + " utilise Soin et regagne " + getIntelligence() * 2 + " points de vie.");
         vie += (getIntelligence() * 2);
+            if (vie > vieDepart){
+                vie = vieDepart;
+            }
 
         return 0;
     }
